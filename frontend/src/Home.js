@@ -33,6 +33,11 @@ function Home() {
                 <td>{item.cust_name}</td>
                 <td>{item.cust_address}</td>
                 <td>{item.cust_amount}</td>
+                <td>
+                 <Link className="btn-link btn-read" to={`/read/${item.cust_id}`}>Read</Link>
+                <button className="btn-edit">Edit</button>
+                <button className="btn-delete">Delete</button>
+              </td>
 
                 <td>
                   <Link to={`/read/${item.cust_id}`}>Read</Link>

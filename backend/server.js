@@ -11,11 +11,13 @@ const db = mysql.createConnection({
     password: "",
     database:"master"
 });
-app.get("/",(req,res)=>{
-  const sql="select * from customer order by cust_id desc";
-  
-  db.query(sql,(err,data)=>{
-    if(err) return res.json("error");
+app.get("/", (req, res) => {
+  const sql = "SELECT * FROM customer ORDER BY cust_id DESC";
+  db.query(sql, (err, data) => {
+    if (err) {
+      console.error("DEBUG: MySQL Error ->", err); // This prints the REAL error in your VS Code terminal
+      return res.status(500).json(err); 
+    }
     return res.json(data);
   });
 });
@@ -53,7 +55,7 @@ app.post("/customer", (req, res) => {
       latest_id = latest_id + 1;
       console.log(latest_id);
 
-      const sql = "INSERT INTO customer (cust_id, cust_name, cust_amount, cust_address) VALUES(?)";
+      const sql = "INSERT INTO customer (cust_id, cust_name, cust_address, cust_amount) VALUES(?)";
       const values = [latest_id, req.body.cust_name, req.body.cust_amount,req.body.cust_address];
 
       db.query(sql, [values], (err, result) => {
@@ -69,7 +71,7 @@ app.put('/read/:cust_id',  (req, res) => {
   const id = req.params.cust_id;
   const values = req.body;
 
-  db.query(sql, [values, id], (result, err) => {
+  db.query(sql, [values, id], (err, result) => {
     if(err) return res.json("Error")
 
     return res.json("Updation successful")

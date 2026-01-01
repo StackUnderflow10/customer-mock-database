@@ -1,28 +1,79 @@
-table{
+/* Container for the table to give it some breathing room */
+.table-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+table {
     width: 100%;
-    border-collapse:collapse;
-    margin-top: 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 20px;
+    border-collapse: collapse;
+    background-color: white;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    overflow: hidden;
+    border-radius: 8px;
 }
-th,td{
-    padding: 12px;
-    border: 1px solid #aaa;
-    text-align:left;
+
+th, td {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid #eee; /* Light border for a cleaner look */
 }
-th{
-    background-color: #f4f4f4;
-    color:#333;
-}
-button{
-    margin-right: 12px;
-    padding: 6px 12px;
-    border:none;
-    border-radius: 10px;
-    color:black;
-    cursor:pointer;
-}
-button:hover{
-    background-color: #6b6969;
+
+th {
+    background-color: #2c3e50; /* Dark professional header */
     color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+/* Zebra striping for rows */
+tbody tr:nth-child(even) {
+    background-color: #fcfcfc;
+}
+
+/* Highlight row on hover */
+tbody tr:hover {
+    background-color: #f1f4f9;
+    transition: background-color 0.2s ease;
+}
+
+/* Button Styling */
+button, .btn-link {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+/* Specific Button Colors */
+.btn-read {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-edit {
+    background-color: #f1c40f;
+    color: #333;
+}
+
+.btn-delete {
+    background-color: #e74c3c;
+    color: white;
+}
+
+button:hover {
+    filter: brightness(90%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
